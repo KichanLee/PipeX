@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parsing.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/03 13:30:44 by kichlee           #+#    #+#             */
+/*   Updated: 2023/07/03 13:30:45 by kichlee          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "pipex.h"
 
 char	*ft_strjoin(char const *s1, char const *s2)
@@ -32,7 +44,7 @@ char	*ft_strrchr(const char *s, int c)
 {
 	int		i;
 
-	i = (int)ft_strlen(s) + 1;
+	i = (int)ft_strlen_a(s) + 1;
 	while (i--)
 	{
 		if (s[i] == (char)c)
