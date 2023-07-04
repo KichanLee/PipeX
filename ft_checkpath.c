@@ -6,7 +6,7 @@
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:30:47 by kichlee           #+#    #+#             */
-/*   Updated: 2023/07/03 21:12:37 by kichlee          ###   ########.fr       */
+/*   Updated: 2023/07/04 16:26:05 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,41 +49,19 @@ char	*ft_check_path(char **envp)
 	return (NULL);
 }
 
-char	*ft_check_access_one(char **av, char **envp)
+char	*ft_check_access_one(char **av, char **str, int num)
 {
 	int	i;
 	char *check_file;
 
 	i = 0;
 	check_file = NULL;
-
-	while (envp[i])
+	
+	while (str[i])
 	{
-		check_file = ft_strjoin(envp[i], plus_slash(av[2]));
-		printf("check file : %s\n", check_file);
+		check_file = ft_strjoin(str[i], plus_slash(av[0]));
 		if(!check_file)
 			return (NULL);
-		if(access(check_file, F_OK | X_OK) == 0)
-			return(check_file);
-		++i;
-	}
-	return (NULL);
-}
-
-char	*ft_check_access_two(char **av, char **envp)
-{
-	int	i;
-	char *check_file;
-
-	i = 0;
-	check_file = NULL;
-
-	while (envp[i])
-	{
-		check_file = ft_strjoin(envp[i], plus_slash(av[3]));
-		if(!check_file)
-			return (0);
-		printf("check file : %s\n", check_file);
 		if(access(check_file, F_OK | X_OK) == 0)
 			return(check_file);
 		++i;

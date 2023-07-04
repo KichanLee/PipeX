@@ -1,0 +1,8 @@
+1. ./a.out file1 grep ls file2
+    >
+
+2. ./a.out file1 "ls -l" "rm -rf" file2
+    
+    >   
+        ls -l , rm -rf , 
+    

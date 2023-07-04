@@ -6,39 +6,65 @@
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:30:40 by kichlee           #+#    #+#             */
-/*   Updated: 2023/07/03 21:13:41 by kichlee          ###   ########.fr       */
+/*   Updated: 2023/07/04 17:37:39 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
+char	**ft_parsing_av(char *str)
+{
+	char	**re;
+
+	re = ft_split(str, ' ');
+	if(!re)
+		return(NULL);
+	return (re);
+}	
+
+
 int main(int ac, char **av, char **envp)
 { 
 	char		*str;
 	t_struct	t;
-
+	char		**parsing_av1;
+	char		**parsing_av2;
+	char		*path1;
+	char		*path2;
+	int			status;
+	
 	str = ft_check_path(envp) + 5;
 	t.s_envp = ft_split(str, ':');
-	pipe(t.px);
-	t.path_one = ft_check_access_one(av, str);
-	t.path_two = ft_check_access_one(av, str);
+	parsing_av1 = ft_parsing_av(av[1]);
+	parsing_av2 = ft_parsing_av(av[2]);
+	path1 = ft_check_access_one(parsing_av1, t.s_envp, 2);
+	path2 = ft_check_access_one(parsing_av2, t.s_envp, 2);
 
-	if(!(t.path_one && t.path_one))
-	{
-		printf("erorr!\n");
-		printf("%s\n", t.path_one);
-		printf("%s\n", t.path_two);
-	}
+	pipe(t.px);
 	t.pid = fork();
-	if(t.pid == -1)
-		printf("Failed to fork!\n");
-	
-	else if(t.pid == 0)
+		
+	if(t.pid == 0)
 	{
-		execve(t.path_one, &(av[2]), envp);
+		close(t.px[0]);
+		dup2(t.px[1], 1);
+		close(t.px[1]);
+		printf("child process!\n");
+		execve(path1, parsing_av1, envp);
 	}
-	else
+
+	int pid2 = fork();
+
+	if(pid2 == 0)
 	{
-		printf("parent process!\n");
+		close(t.px[1]);
+		dup2(t.px[0], 0);
+		close(t.px[0]);
+		execve(path2, parsing_av2, envp);
 	}
+	close(t.px[0]);
+	close(t.px[1]);
+	waitpid(t.pid, NULL, 0);
+	waitpid(pid2, NULL, 0);
+
+	return (0);
 }

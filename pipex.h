@@ -6,7 +6,7 @@
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 00:56:43 by kichan            #+#    #+#             */
-/*   Updated: 2023/07/03 21:07:55 by kichlee          ###   ########.fr       */
+/*   Updated: 2023/07/04 16:42:13 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ typedef struct s_stuct
     char    **s_envp;
     char    *path_one;
     char    *path_two;
+    char    **sp_av;
     
 } t_struct;
 
@@ -45,7 +46,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 //ft_checkpath.c
 char	*plus_slash(char *str);
 char	*ft_check_path(char **envp);
-char    *ft_check_access_one(char **av, char **envp);
-char    *ft_check_access_two(char **av, char **envp);
+char	*ft_check_access_one(char **av, char **str, int num);
 
 #endif 
