@@ -6,7 +6,7 @@
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:30:44 by kichlee           #+#    #+#             */
-/*   Updated: 2023/07/05 16:26:57 by kichlee          ###   ########.fr       */
+/*   Updated: 2023/07/06 22:23:57 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,10 @@ char	**ft_parsing_av(char *str)
 {
 	char	**re;
 
+	if(!str)
+		return (NULL);
 	re = ft_split(str, ' ');
-	if(!re)
-		return(NULL);
+	if (!re)
+		return (NULL);
 	return (re);
 }

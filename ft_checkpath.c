@@ -6,7 +6,7 @@
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:30:47 by kichlee           #+#    #+#             */
-/*   Updated: 2023/07/05 17:12:47 by kichlee          ###   ########.fr       */
+/*   Updated: 2023/07/06 22:28:50 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*plus_slash(char *str)
 
 	str_slash = (char *)malloc(ft_strlen_a(str) + 2);
 	i = 1;
-	if(!str_slash)
+	if (!str_slash)
 		ft_error("plus_slash error!\n");
 	str_slash[0] = '/';
 	while (*str)
@@ -34,16 +34,15 @@ char	*plus_slash(char *str)
 
 char	*ft_check_path(char **envp)
 {
-	int	i;
-	char *path_check;
-	char *re;
+	int		i;
+	char	*path_check;
 
 	i = 0;
 	while (envp[i])
 	{
 		path_check = ft_strnstr(envp[i], "PATH", ft_strlen_a(envp[i]));
-		if(path_check)
-			return(path_check);
+		if (path_check)
+			return (path_check);
 		i++;
 	}
 	return (NULL);
@@ -51,19 +50,18 @@ char	*ft_check_path(char **envp)
 
 char	*ft_check_access_file(char **av, char **str)
 {
-	int	i;
-	char *check_file;
+	int		i;
+	char	*check_file;
 
 	i = 0;
-	check_file = NULL;
-	
 	while (str[i])
 	{
 		check_file = ft_strjoin(str[i], plus_slash(av[0]));
-		if(!check_file)
+		if (!check_file)
 			return (NULL);
-		if(access(check_file, F_OK | X_OK) == 0)
-			return(check_file);
+		if (access(check_file, F_OK | X_OK) == 0)
+			return (check_file);
+		free(check_file);
 		++i;
 	}
 	return (NULL);
