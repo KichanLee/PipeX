@@ -6,7 +6,7 @@
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 00:56:43 by kichan            #+#    #+#             */
-/*   Updated: 2023/07/06 23:39:06 by kichlee          ###   ########.fr       */
+/*   Updated: 2023/07/07 01:07:09 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 typedef struct s_stuct
 {
 	int		px[2];
-	//int 	**px = malloc(sizeof(int))
 	pid_t	pid;
 	pid_t	pid_two;
 	char	**s_envp;

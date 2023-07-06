@@ -1,26 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_checkfile.c                                     :+:      :+:    :+:   */
+/*   ft_checkerror.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/05 16:26:12 by kichlee           #+#    #+#             */
-/*   Updated: 2023/07/07 00:04:25 by kichlee          ###   ########.fr       */
+/*   Created: 2023/07/05 16:47:56 by kichlee           #+#    #+#             */
+/*   Updated: 2023/07/06 21:36:37 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-void	ft_checkfile(char *infile, char *outfile, t_struct *t)
+void	ft_error(char *str)
 {
-	t->fd1 = open(infile, O_RDONLY);
-	if (t->fd1 < 0)
-	{
-		write(1, infile, ft_strlen_a(infile));
-		write(1, ": No such file or directory\n", 28);
-	}
-	t->fd2 = open(outfile, O_WRONLY | O_CREAT | O_TRUNC, 0644);
-	if (t->fd2 < 0)
-		ft_error("Can't Open Outfile\n");
+	perror(str);
+	exit(1);
+}
+
+void	ft_checkerror(int ac, char **av, char **evnp)
+{
+	if (ac != 5)
+		ft_error("Argument count is not properly\n");
+	if (!av[1] || !av[4])
+		ft_error("Argument value is not properly\n");
+	if (!evnp || !*evnp)
+		ft_error("Can't find path properly\n");
 }
