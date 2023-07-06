@@ -6,7 +6,7 @@
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:30:47 by kichlee           #+#    #+#             */
-/*   Updated: 2023/07/04 16:26:05 by kichlee          ###   ########.fr       */
+/*   Updated: 2023/07/05 17:12:47 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*plus_slash(char *str)
 	str_slash = (char *)malloc(ft_strlen_a(str) + 2);
 	i = 1;
 	if(!str_slash)
-		return (NULL);
+		ft_error("plus_slash error!\n");
 	str_slash[0] = '/';
 	while (*str)
 	{
@@ -49,7 +49,7 @@ char	*ft_check_path(char **envp)
 	return (NULL);
 }
 
-char	*ft_check_access_one(char **av, char **str, int num)
+char	*ft_check_access_file(char **av, char **str)
 {
 	int	i;
 	char *check_file;

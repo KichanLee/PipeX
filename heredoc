@@ -1,0 +1,12 @@
+ft_checkpath.c
+ft_parsing.c
+ft_split.c
+heredoc
+main.c
+pipex.h
+wonie
+kichan
+me
+
+heredoc을 할 때는 infile처럼 읽어줄 임시파일이 필요함!!
+이걸 다 쓰고 unlink해줘야됨

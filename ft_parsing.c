@@ -6,7 +6,7 @@
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:30:44 by kichlee           #+#    #+#             */
-/*   Updated: 2023/07/03 13:30:45 by kichlee          ###   ########.fr       */
+/*   Updated: 2023/07/05 16:26:57 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,4 +88,14 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t l)
 			return ((char *)&s1[i - len]);
 	}
 	return (0);
+}
+
+char	**ft_parsing_av(char *str)
+{
+	char	**re;
+
+	re = ft_split(str, ' ');
+	if(!re)
+		return(NULL);
+	return (re);
 }
