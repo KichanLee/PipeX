@@ -6,7 +6,7 @@
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/03 13:30:44 by kichlee           #+#    #+#             */
-/*   Updated: 2023/07/07 01:06:03 by kichlee          ###   ########.fr       */
+/*   Updated: 2023/07/07 03:32:39 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,6 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	}
 	str[i] = '\0';
 	return (str);
-}
-
-char	*ft_strrchr(const char *s, int c)
-{
-	int		i;
-
-	i = (int)ft_strlen_a(s) + 1;
-	while (i--)
-	{
-		if (s[i] == (char)c)
-			return ((char *)s + i);
-	}
-	return (NULL);
 }
 
 size_t	ft_strlen_a(const char *ch)

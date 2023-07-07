@@ -6,7 +6,7 @@
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 15:08:14 by kichlee           #+#    #+#             */
-/*   Updated: 2023/07/06 22:25:59 by kichlee          ###   ########.fr       */
+/*   Updated: 2023/07/07 02:01:56 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 void	ft_childone(t_struct *t, char **envp)
 {
 	t->pid = fork();
+	if(t->pid == -1)
+		ft_error("fork error!\n");
 	if (t->pid == 0)
 	{
 		close(t->px[0]);
@@ -33,6 +35,8 @@ void	ft_childone(t_struct *t, char **envp)
 void	ft_childtwo(t_struct *t, char **envp)
 {
 	t->pid_two = fork();
+	if(t->pid_two == -1)
+		ft_error("fork error!\n");
 	if (t->pid_two == 0)
 	{
 		close(t->px[1]);

@@ -1,4 +1,0 @@
-ft_check_access_file
-asdfasf
-sfd
-asdfasf

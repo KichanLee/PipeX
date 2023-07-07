@@ -6,17 +6,15 @@
 /*   By: kichlee <kichlee@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/27 00:56:43 by kichan            #+#    #+#             */
-/*   Updated: 2023/07/07 01:07:09 by kichlee          ###   ########.fr       */
+/*   Updated: 2023/07/07 03:32:47 by kichlee          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_H
 # define PIPEX_H
 
-# define HEREDOC "7DB7AD6E-A68E-4A97-B988-61DB560FEEB9"
-/*
-** Header files
-*/
+//headerfile
+
 # include <stdlib.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -43,11 +41,9 @@ typedef struct s_stuct
 // split.c
 char	**ft_split(char const *s, char c);
 
-//ft_parsing.C
+//ft_parsing.c
 size_t	ft_strlen_a(const char *ch);
 char	*ft_strnstr(const char *s1, const char *s2, size_t l);
-int		ft_strncmp(const char *s1, const char *s2, size_t t);
-char	*ft_strrchr(const char *s, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 
 // ft_checkpath.c
